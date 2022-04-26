@@ -1,0 +1,33 @@
+.headerBar{
+    padding: 10px;
+    background-color: lavender;
+    border-bottom: solid 1px;
+    padding-bottom: 1rem;
+}
+.jumbotron{
+    background-color: bisque;
+    padding: 50px;
+
+}
+.centre{
+    display: flex;
+    justify-content: center;
+}
+.cardWrap{
+    display: inline-block;
+}
+.flex{
+    display: flex;
+}
+.ml-2{
+    margin-left: 0.3rem;
+}
+.mr-3{
+    margin-right: 1rem;
+}
+.pointer{
+    cursor: pointer;
+}
+.right{
+    float: right;
+}
