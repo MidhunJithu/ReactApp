@@ -27,8 +27,7 @@ class App extends React.Component{
                 <h2 className='centre'>Welcome to Digital Library</h2>
             </TopBar>
             <BrowserRouter>
-                <Routes>
-                    
+                <Routes>                    
                     <Route path='/' element={<Layout/>}>
                         <Route path ='/Home' element={<Home/>}></Route>
                         <Route path ='/Comments' element={<Comments/>}></Route>

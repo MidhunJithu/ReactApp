@@ -1,8 +1,9 @@
-import React from "react";
+import React ,{useContext} from "react";
 import { Card ,OverlayTrigger,Popover,Button,Pagination} from "react-bootstrap";
 import './index.css';
 import { bookById } from "./data/Books";
-import {FcInfo} from 'react-icons/fc'
+import {FcInfo} from 'react-icons/fc';
+import ThemeContext from "./contexts";
 
 export function Avatar(props){
     return <img src={props.user.url} alt={props.user.name} width={props.width} />
@@ -17,7 +18,9 @@ export function TopBar(props){
 }
 
 export function UseCard(props){
-  let book = bookById(props.bookId);
+     let book = bookById(props.bookId);
+     const theme = useContext(ThemeContext);
+
   const popover = (
     <Popover id="popover-basic">
       <Popover.Header as="h3">{book[0].title}</Popover.Header>
@@ -28,7 +31,7 @@ export function UseCard(props){
     </Popover>
   );
   return(
-    <Card style={props.style} >
+    <Card style={props.style} className = {theme}>
       <Card.Img variant="top" src={props.src} style={{width:'100px',margin:'auto'}}/>
       <Card.Body>
         <div className="flex">
