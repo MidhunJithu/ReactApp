@@ -49,15 +49,17 @@ export class Comments extends React.Component{
             {!this.state.loading ?
             (<div className="container">
                {this.state.data.map((data) => (
-                <PostCards key={data.id} head = {data.title}  headClass ='text-success' content ={data.body} contentClass='text-dark'/>
+                <PostCards class='m-5' key={data.id} head = {data.title}  headClass ='text-success' content ={data.body} contentClass='text-dark'/>
                 ))}
                 <div className="flex justify-content-center">
                 <CustomPagination curr ={this.state.page} last={this.state.totalPage} onPageChange={this.changePage}/>
                 </div>
             </div>)
             :
-            (<div>
-                Loading...
+            (<div className="container">
+                {[1,2,3,4,5].map((data) => (
+                <PostCards class='m-5' key={data.toString()} head = 'Loading...'  headClass ='text-success' content = 'Loading....' contentClass='text-dark'/>
+                ))}
             </div>)
             }           
             </>

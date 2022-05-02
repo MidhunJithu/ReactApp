@@ -11,7 +11,7 @@ export function Avatar(props){
 
 export function TopBar(props){
   return(
-    <div className="jumbotron">
+    <div className="titleBar">
      {props.children}
     </div>
   );
@@ -56,8 +56,8 @@ export function UseCard(props){
 export function PostCards(props){
 
   return(
-    <Card className="m-5">
-    <Card.Header className={props.headClass}>{props.head}</Card.Header>
+    <Card className={props.class}>
+    {props.head ? <Card.Header className={props.headClass}>{props.head}</Card.Header> : ''}
     <Card.Body>
       <Card.Title>{props.title}</Card.Title>
       <Card.Text className={props.contentClass}>
@@ -92,4 +92,53 @@ export function CustomPagination(props){
       <Pagination.Last onClick={handlePage} data-id={props.last}/>
     </Pagination> 
   );
+}
+class Cat extends React.Component {
+  render() {
+    const mouse = this.props.mouse;
+    return (
+      <span src="/cat.jpg" style={{ position: 'absolute', left: mouse.x, top: mouse.y }} >test</span>
+    );
+  }
+}
+
+class MouseWithCat extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleMouseMove = this.handleMouseMove.bind(this);
+    this.state = { x: 0, y: 0 };
+  }
+
+  handleMouseMove(event) {
+    this.setState({
+      x: event.clientX,
+      y: event.clientY
+    });
+  }
+
+  render() {
+    return (
+      <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
+
+        {/*
+          We could just swap out the <p> for a <Cat> here ... but then
+          we would need to create a separate <MouseWithSomethingElse>
+          component every time we need to use it, so <MouseWithCat>
+          isn't really reusable yet.
+        */}
+        <Cat mouse={this.state} />
+      </div>
+    );
+  }
+}
+
+export class MouseTracker extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Move the mouse around!</h1>
+        <MouseWithCat />
+      </div>
+    );
+  }
 }

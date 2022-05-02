@@ -5,7 +5,7 @@ import { CustomModal } from "../bootstrap";
 import { AddBook } from "../Forms/AddBook";
 import ThemeContext from "../contexts";
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
-
+import { MouseTracker } from "../utilities";
 
 const books =  getBooks(); 
   class Home extends React.Component{
@@ -28,7 +28,7 @@ const books =  getBooks();
     render(){ 
       let themeClass =this.state.darkTheme ? 'bg-secondary' : '';   
       return(
-        <div>
+        <div className="container-fluid">
           <h1>Top  picks to Read </h1>
           <Form.Group className="mb-3">
             <Form.Control placeholder="Search Books" onChange={this.searchBook}/>
@@ -50,6 +50,7 @@ const books =  getBooks();
           <ThemeContext.Provider value={themeClass}>
             <BooksCard books = {this.state.books} filter={this.state.filter}/>
           </ThemeContext.Provider>
+          <MouseTracker/>
         </div>
       );
     }

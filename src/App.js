@@ -1,4 +1,4 @@
-import React  ,{ Suspense} from 'react';
+import React from 'react';
 import{ Layout} from './pages/Navbar';
 import Home from './pages/Home';
 import Blogs from './pages/Blogs';
@@ -7,6 +7,8 @@ import Contacts from './pages/Contacts';
 import ContactInfo from './pages/ContactInfo';
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import { TopBar } from './utilities';
+import {WelcomePage } from './layout/about';
+import { Footer } from './layout/footer';
 
 class App extends React.Component{
     constructor(props){
@@ -24,11 +26,13 @@ class App extends React.Component{
         return(
             <>
             <TopBar>
-                <h2 className='centre'>Welcome to Digital Library</h2>
+                <h2 className='centre text-white'>Welcome to Digital Library</h2>
             </TopBar>
+           
             <BrowserRouter>
                 <Routes>                    
                     <Route path='/' element={<Layout/>}>
+                        <Route index element={<WelcomePage/>}/>
                         <Route path ='/Home' element={<Home/>}></Route>
                         <Route path ='/Comments' element={<Comments/>}></Route>
                         <Route path='Blogs' element={<Blogs/>}></Route>
@@ -39,7 +43,8 @@ class App extends React.Component{
                         <Route path='*' element={<main><p>No INFO FOUND</p></main>}></Route>
                     </Route>
                 </Routes>
-            </BrowserRouter>  
+            </BrowserRouter> 
+            <Footer/>
             </>
             
         )
