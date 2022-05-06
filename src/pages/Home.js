@@ -5,7 +5,6 @@ import { CustomModal } from "../bootstrap";
 import { AddBook } from "../Forms/AddBook";
 import ThemeContext from "../contexts";
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
-import { MouseTracker } from "../utilities";
 
 const books =  getBooks(); 
   class Home extends React.Component{
@@ -50,7 +49,6 @@ const books =  getBooks();
           <ThemeContext.Provider value={themeClass}>
             <BooksCard books = {this.state.books} filter={this.state.filter}/>
           </ThemeContext.Provider>
-          <MouseTracker/>
         </div>
       );
     }
